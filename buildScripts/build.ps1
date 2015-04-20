@@ -1,7 +1,7 @@
 ﻿param($task = "default")
 
 function Get-PowershellBits(){
-  Switch ([System.Runtime.InterOpServices.Marshal]::SizeOf([System.IntPtr])) {
+  Switch ([IntPtr]::Size) {
     4 { Return "32-bit"}
     8 { Return "64-bit"}
     default { Return null }
