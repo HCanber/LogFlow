@@ -21,6 +21,7 @@
 	<files>
 		<file src="..\..\libs\BinaryRage\BinaryRage.dll" target="lib\net40" />
 		<file src="..\..\_release\LogFlow.exe" target="lib\net40" />
+		<file src="..\..\_release\LogFlow.pdb" target="lib\net40" />
 		<file src="..\..\_release\LogFlow.xml" target="lib\net40" />
 		<file src="..\..\_release\LogFlow.exe.config" target="content" />
 		<file src="..\..\_release\NLog.config" target="content" />		

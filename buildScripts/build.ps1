@@ -11,7 +11,7 @@ function Get-PowershellBits(){
 $scriptPath = $MyInvocation.MyCommand.Path
 $scriptDir = Split-Path $scriptPath
 $srcDir = Resolve-Path (Join-Path $scriptDir ..\Source)
-$packagesDir = Join-Path $srcDir packages
+$packagesDir = Resolve-Path (Join-Path $scriptDir ..\Packages)
 $nuget_exe="$scriptDir\..\.nuget\NuGet.exe"
 
 #Write-Host '$scriptPath='$scriptPath
@@ -22,16 +22,16 @@ $nuget_exe="$scriptDir\..\.nuget\NuGet.exe"
 
 get-module psake | remove-module
 
-# Download all nuget packages needed. They are downloaded to src\packages dir
+# Download all nuget packages needed. They are downloaded to packages dir
 $env:EnableNuGetPackageRestore="true"
 try {
-  & $nuget_exe install $scriptDir\packages.config -OutputDirectory $packagesDir 2>&1
+  & $nuget_exe install $scriptDir\packages.config -OutputDirectory $packagesDir -Prerelease 2>&1
 } catch [Exception]{
-  Write-Host "Unable to execute`n$nuget_exe install packages.config -OutputDirectory $packagesDir. $($_.Exception.Message)"
+  Write-Host "Unable to execute`n$nuget_exe install packages.config -OutputDirectory $packagesDir -Prerelease. $($_.Exception.Message)"
   exit 1
 }
 if ($lastexitcode -ne 0) {
-  Write-Host "An error occured while executing`n$nuget_exe install packages.config -OutputDirectory $packagesDir"
+  Write-Host "An error occured while executing`n$nuget_exe install packages.config -OutputDirectory $packagesDir -Prerelease "
   exit 1
 }
 
