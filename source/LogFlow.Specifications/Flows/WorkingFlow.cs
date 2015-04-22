@@ -4,9 +4,9 @@ namespace LogFlow.Specifications.Flows
 {
 	public class WorkingFlow : Flow
 	{
-		public WorkingFlow()
+		public WorkingFlow(string logType = "TestProcessor", string name = null)
 		{
-			CreateProcess("TestProcessor")
+			CreateProcess(logType, name)
 				.FromInput(new EmptyInput())
 				.Then(new TestProcessor())
 				.ToOutput(new ReportToCurrentResultOutput());

@@ -48,7 +48,7 @@ namespace LogFlow.Builtins.Outputs
 				throw new ApplicationException(string.Format("Failed to index: '{0}'. Response: '{1}'.", jsonBody, indexResult.ResponseRaw));
 			}
 
-			Log.Trace("{0}: ({1}) Indexed successfully.", LogContext.LogType, lineId);
+			Log.Trace("{0}: ({1}) Indexed successfully.", LogContext.Name, lineId);
 		}
 
 		private string BuildIndexName(DateTime timestamp)
@@ -94,7 +94,7 @@ namespace LogFlow.Builtins.Outputs
 				throw new ApplicationException(string.Format("Failed to create index: '{0}'. Result: '{1}'", indexName, result.ConnectionStatus.ResponseRaw));
 			}
 
-			Log.Trace("{0}: Index '{1}' i successfully created.", LogContext.LogType, indexName);
+			Log.Trace("{0}: Index '{1}' i successfully created.", LogContext.Name, indexName);
 		}
 
 		private void CreateMappings(string indexName)
