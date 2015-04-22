@@ -3,6 +3,9 @@
 [Oo]bj/
 _release
 
+#git related files
+*.orig
+
 # User-specific files
 *.suo
 *.user
