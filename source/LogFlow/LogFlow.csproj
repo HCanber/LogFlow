@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultFlowFactory.cs" />
     <Compile Include="Builtins\Inputs\ConsoleInput.cs" />
     <Compile Include="Builtins\Inputs\FileInput.cs" />
     <Compile Include="Builtins\Inputs\TextFileLineReader.cs" />
@@ -79,12 +80,14 @@
     <Compile Include="Builtins\Processors\IISLog\LogLineFields.cs" />
     <Compile Include="Builtins\Processors\SetEventTimeStampToNow.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="DoNotAutoCreateAttribute.cs" />
     <Compile Include="EncodingDetection\DetectedEncoding.cs" />
     <Compile Include="EncodingDetection\DetectionResult.cs" />
     <Compile Include="EncodingDetection\EncodingDetector.cs" />
     <Compile Include="EncodingDetection\IEncodingDetector.cs" />
     <Compile Include="EncodingDetection\NoEncodingDetector.cs" />
     <Compile Include="FlowBuilder.cs" />
+    <Compile Include="IFlowFactory.cs" />
     <Compile Include="JSonKeys.cs" />
     <Compile Include="LogContext.cs" />
     <Compile Include="ILogInput.cs" />

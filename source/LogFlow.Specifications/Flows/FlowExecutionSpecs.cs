@@ -27,7 +27,7 @@ namespace LogFlow.Specifications.Flows
 				}
 			});
 
-			finishedTask.Wait(TimeSpan.FromMilliseconds(100));
+			finishedTask.Wait(TimeSpan.FromMilliseconds(1000));
 
 			tags = ReportToCurrentResultOutput.CurrentResult.Json["tags"] as JArray;
 		};
