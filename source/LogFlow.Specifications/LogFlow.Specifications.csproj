@@ -54,7 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Flows\CreateProcessTestFlow.cs" />
     <Compile Include="Flows\EmptyFlow.cs" />
+    <Compile Include="Flows\FlowSpecs.cs" />
     <Compile Include="Flows\FlowExecutionSpecs.cs" />
     <Compile Include="Flows\FlowWithoutInput.cs" />
     <Compile Include="Flows\FlowWithoutName.cs" />

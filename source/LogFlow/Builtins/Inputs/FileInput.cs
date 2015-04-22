@@ -54,7 +54,7 @@ namespace LogFlow.Builtins.Inputs
 		private void AddToQueueWithDuplicationCheck(string fullPath)
 		{
 			_files.AddOrUpdate(fullPath, true, (key, value) => value);
-			Log.Trace(string.Format("{0}: Enqueuing file '{1}' for processing.", LogContext.LogType, fullPath));
+			Log.Trace(string.Format("{0}: Enqueuing file '{1}' for processing.", LogContext.Name, fullPath));
 		}
 
 		private string GetPath()
@@ -70,7 +70,7 @@ namespace LogFlow.Builtins.Inputs
 
 		public void Start()
 		{
-			Log.Info(string.Format("{0}: Starting FileInput.", LogContext.LogType));
+			Log.Info(string.Format("{0}: Starting FileInput.", LogContext.Name));
 
 			AddCurrentFilesToQueue();
 			StartFileSystemWatcher();
@@ -79,18 +79,18 @@ namespace LogFlow.Builtins.Inputs
 		private void StartFileSystemWatcher()
 		{
 			_watcher.EnableRaisingEvents = true;
-			Log.Info(string.Format("{0}: Started FileSystemWatcher for path {1}", LogContext.LogType, _path));
+			Log.Info(string.Format("{0}: Started FileSystemWatcher for path {1}", LogContext.Name, _path));
 		}
 
 		private void StopFileSystemWatcher()
 		{
 			_watcher.EnableRaisingEvents = false;
-			Log.Info(string.Format("{0}: Stopped FileSystemWatcher for path {1}", LogContext.LogType, _path));
+			Log.Info(string.Format("{0}: Stopped FileSystemWatcher for path {1}", LogContext.Name, _path));
 		}
 
 		private void AddCurrentFilesToQueue()
 		{
-			Log.Info(string.Format("{0}: Adding all current files as changed.", LogContext.LogType));
+			Log.Info(string.Format("{0}: Adding all current files as changed.", LogContext.Name));
 
 			foreach (var file in GetCurrentFiles())
 			{
@@ -187,8 +187,8 @@ namespace LogFlow.Builtins.Inputs
 						result.MetaData[MetaDataKeys.FilePath] = filePath;
 						result.Position = fs.Position;
 
-						Log.Trace(string.Format("{0}: ({1}) from '{2}' at byte position {3}.", LogContext.LogType, result.Id, filePath, originalPosition));
-						Log.Trace(string.Format("{0}: ({1}) line '{2}' read.", LogContext.LogType, result.Id, lineResult));
+						Log.Trace(string.Format("{0}: ({1}) from '{2}' at byte position {3}.", LogContext.Name, result.Id, filePath, originalPosition));
+						Log.Trace(string.Format("{0}: ({1}) line '{2}' read.", LogContext.Name, result.Id, lineResult));
 
 						_unprocessed.Enqueue(result);
 
