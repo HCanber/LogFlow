@@ -5,13 +5,14 @@ namespace LogFlow
 {
 	public class LogContext
 	{
-		public LogContext(string logType, string name=null) : this(logType, new BinaryRangeStateStorage(logType),name) { }
+		public LogContext(string logType, string name=null) : this(logType, null, name) { }
 
 		public LogContext(string logType, IStateStorage storage, string name=null)
 		{
+			name = name ?? logType;
 			LogType = logType;
-			Storage = storage;
-			Name = name ?? logType;
+			Storage = storage ?? new BinaryRangeStateStorage(name);
+			Name = name;
 		}
 
 		public string LogType { get; private set; }
