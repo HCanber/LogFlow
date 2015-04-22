@@ -31,7 +31,7 @@ namespace LogFlow
 
 			//Create flows, build and register them
 			var flows = LetFactoriesCreateFlows(factories);
-			Log.Trace("Number of flows found: " + flows);
+			Log.Trace("Number of flows found: " + flows.Count);
 			BuildAndRegisterFlows(flows);
 		
 
